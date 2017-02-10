@@ -20,8 +20,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AppRoutes } from './app-routing.module';
 
-import { AgmCoreModule } from 'angular2-google-maps/core';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,11 +34,6 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     HttpModule,
     JsonpModule,
     DropdownModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCE9ixLA_qZ1U6miNBXdRdsn4S2Tcc7mkM',
-      libraries: ['places', 'geometry', 'visualization'],
-      language: 'pt-BR'
-    })
   ],
   bootstrap: [
     AppComponent

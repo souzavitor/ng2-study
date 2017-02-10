@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="creation" (ngSubmit)="savePlace()">
+                <div class="form-group">
+                    <div class="col-xs-12 col-md-9 col-lg-10">
+                        <input type="text" class="form-control search-address-input" #search placeholder="Search an address..." id="google-maps-search-input">
+                    </div>
+                    <div class="col-xs-12 col-md-3 col-lg-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+                <sebm-google-map
+                    [latitude]="latitude"
+                    [longitude]="longitude"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false">
+                </sebm-google-map>
+            </form>
+        </div>
+    </div>
+</div>

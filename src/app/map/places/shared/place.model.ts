@@ -1,11 +1,11 @@
 export class Place {
+    public id : number;
     constructor(
-        public id : Number,
-        public address : String,
-        public number_address : String,
-        public zip_code : String,
-        public country : String,
-        public state : String,
-        public city : String
+        public address : string,
+        public number_address : string,
+        public zip_code : string,
+        public country : string,
+        public state : string,
+        public city : string
     ) {}
 }

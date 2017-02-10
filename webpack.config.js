@@ -24,18 +24,8 @@ const config = {
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       { test: /\.json$/, loader: 'json-loader' },
-      /* Embed files. */
-      { 
-        test: /\.(html|css)$/, 
-        loader: 'raw-loader',
-        exclude: /\.async\.(html|css)$/
-      },
-      /* Async loading. */
-      {
-        test: /\.async\.(html|css)$/, 
-        loaders: ['file?name=[name].[hash].[ext]', 'extract']
-      },
-      { test: /\.scss$/, exclude: /node_modules/, loaders: ['raw-loader', 'sass-loader'] },
+      { test: /\.html$/, loaders: ['html-loader'] },
+      { test: /\.scss$/, exclude: /node_modules/, loaders: ['raw-loader', 'resolve-url-loader', 'sass-loader'] },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.(gif|png|jpe?g)$/i, loader: 'file-loader?name=dist/images/[name].[ext]' },
       { test: /\.woff2?$/, loader: 'url-loader?name=dist/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff' },
