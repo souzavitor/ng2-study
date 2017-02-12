@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const DotenvPlugin = require('webpack-dotenv-plugin');
 
 const config = {
   entry: {
@@ -37,7 +38,11 @@ const config = {
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname
-    )
+    ),
+    new DotenvPlugin({
+      sample: './.env.default',
+      path: './.env'
+    })
   ]
 };
 
