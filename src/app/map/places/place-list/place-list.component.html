@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Places Manager - Place List</h2></div>
+                <div class="panel-heading"><h2>Places Manager</h2></div>
                 <div class="panel-body">
-                    <a class="btn btn-primary" routerLink='/map/places/create'>
-                        <i class="glyphicon glyphicon-add"></i>
-                        Create new place
-                    </a>
+                    <sg-place-creation [listId]="listId" [places]="places"></sg-place-creation>
+
+                    <div class="line-separator"></div>
+
                     <table class="table table-hover table-stripped">
                         <thead>
                             <tr>
@@ -16,10 +16,20 @@
                                 <th>Country</th>
                                 <th>State/Pronvice</th>
                                 <th>City</th>
+                                <th class="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <tr *ngFor="let place of places">
+                                <td>{{place.address}}</td>
+                                <td>{{place.number_address}}</td>
+                                <td>{{place.country}}</td>
+                                <td>{{place.state}}</td>
+                                <td>{{place.city}}</td>
+                                <td class="actions">
+                                    <a href="#" (click)="removePlace($event,place)" tooltip="Remove the place"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -3,6 +3,9 @@ import { Component, ViewChild, NgZone, OnInit, Input, ElementRef } from '@angula
 import { MapsAPILoader } from 'angular2-google-maps/core';
 import { Place } from '../shared/place.model';
 
+import { PlaceService } from '../shared/place.service';
+import { EmitterService } from '../../../shared/emitter.service';
+
 declare var google : any;
 
 @Component({
@@ -27,11 +30,15 @@ export class PlaceCreationComponent implements OnInit {
 
   private place : Place;
 
+  @Input() listId : string;
+  @Input() places : Place[];
+
   @ViewChild('search')
   public searchElementRef : ElementRef;
 
   constructor( 
-    private mapLoader: MapsAPILoader
+    private mapLoader: MapsAPILoader,
+    private placeService : PlaceService
   ) { }
 
   ngOnInit() {
@@ -39,12 +46,19 @@ export class PlaceCreationComponent implements OnInit {
     this.initAutocomplete();
   }
 
-  public savePlace(e : any) {
-    e.preventDefault()
+  public savePlace(event : any) {
+    event.preventDefault();
+    this.searchElementRef.nativeElement.blur();
     if (!this.place) {
       return;
     }
-    console.log(this.place);
+    this.placeService.savePlace(this.place)
+      .subscribe(result => {
+        EmitterService.get(this.listId).emit(result);
+        this.place = null;
+        this.searchElementRef.nativeElement.value = '';
+        this.searchElementRef.nativeElement.focus();
+      }, err => console.log(err));
   }
   
   private initAutocomplete() {
@@ -82,7 +96,8 @@ export class PlaceCreationComponent implements OnInit {
       convertedPlace.postal_code,
       convertedPlace.country,
       convertedPlace.administrative_area_level_1,
-      convertedPlace.locality
+      convertedPlace.locality,
+      [place.geometry.location.lat(), place.geometry.location.lng()]
     );
   }
 
