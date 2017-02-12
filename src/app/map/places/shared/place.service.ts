@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
-import { Places } from './mock-places';
+
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PlaceService {
-  updatePlace(newPlace : Place) {
-    Promise.resolve(Places)
-      .then(places => places.find(place => place.id === newPlace.id))
-      .then((place : Place) => place = newPlace);
+  private endpoint : string = process.env.API_HOST + '/api/v1/places';
+
+  constructor(private http : Http) {}
+
+  removePlace(place : Place) : Observable<Object> {
+    return this.http.delete(this.endpoint + '/' + place._id)
+      .map((res : Response) => { return {data : 'OK'}} )
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
-  savePlace(place : Place) {
-    Places.push(place);
+
+  savePlace(place : Place) : Observable<Place> {
+    return this.http.post(this.endpoint, place)
+      .map((res : Response) => res.json().data)
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
-  getPlaces() {
-    return Promise.resolve(Places);
-  }
-  getPlace(id: number | string) {
-    return Promise.resolve(Places)
-      .then(places => places.find(place => place.id === +id));
+
+  getPlaces() : Observable<Place[]> {
+    return this.http.get(this.endpoint)
+      .map((res : Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

@@ -33,7 +33,7 @@ import { AppRoutes } from './app-routing.module';
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,
-    DropdownModule.forRoot(),
+    DropdownModule.forRoot()
   ],
   bootstrap: [
     AppComponent
