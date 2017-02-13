@@ -1,23 +1,19 @@
 <h3>Add a new Place</h3>
 <h4>Search an address and save a new place!</h4>
-<form class="form-horizontal" role="creation" (ngSubmit)="savePlace($event)">
+<form class="form" role="creation" (ngSubmit)="savePlace()" #placeForm="ngForm">
     <div class="form-group">
-        <div class="col-xs-12 col-md-9 col-lg-10">
-            <input type="text" class="form-control search-address-input" #search placeholder="Search an address..." id="google-maps-search-input">
-        </div>
-        <div class="col-xs-12 col-md-3 col-lg-2">
-            <button type="submit" class="btn btn-primary">Save</button>
+        <label for="address" class="control-label">Address:</label>
+        <input type="text" class="form-control search-address-input" #search placeholder="Search an address..." id="address">
+    </div>
+    <div class="form-group">
+        <label for="label" class="control-label">Label:</label>
+        <input type="text" class="form-control" id="label" required [(ngModel)]="place.label" name="label" #label="ngModel">
+        <div [hidden]="label.valid || label.pristine"
+             class="alert alert-danger">
+          Label is required
         </div>
     </div>
-    <sebm-google-map
-        [latitude]="latitude"
-        [longitude]="longitude"
-        [zoom]="zoom"
-        [disableDefaultUI]="false">
-        <sebm-google-map-marker 
-          *ngFor="let place of places;"
-          [latitude]="place.coordinates[0]"
-          [longitude]="place.coordinates[1]">
-      </sebm-google-map-marker>
-    </sebm-google-map>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!placeForm.form.valid"><i class="glyphicon glyphicon-add"></i>save</button>
+    </div>
 </form>

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Places Manager</h2></div>
+                <div class="panel-body">
+                    <sg-place-creation [listId]="listId"></sg-place-creation>
+                    <sebm-google-map
+                        [latitude]="lastCoordinates.latitude"
+                        [longitude]="lastCoordinates.longitude"
+                        [zoom]="lastCoordinates.zoom"
+                        [disableDefaultUI]="false">
+                        <sebm-google-map-marker 
+                            *ngFor="let place of places;"
+                            [latitude]="place.coordinates[0]"
+                            [longitude]="place.coordinates[1]">
+                        </sebm-google-map-marker>
+                    </sebm-google-map>
+                    <div class="line-separator"></div>
+                    <sg-place-list [listId]="listId" (updateList)="onUpdateList($event)"></sg-place-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

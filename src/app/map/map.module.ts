@@ -4,9 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
 import { PanelComponent } from './panel/panel.component';
+
+import { PlaceIndexComponent } from './places/place-index/place-index.component';
 import { PlaceListComponent } from './places/place-list/place-list.component';
 import { PlaceCreationComponent } from './places/place-creation/place-creation.component';
+
 import { PlaceService } from './places/shared/place.service';
+
 import { EmitterService } from '../shared/emitter.service';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -17,6 +21,7 @@ import { MapRoutes } from './map-routing.module';
 @NgModule({
   declarations: [
     PanelComponent,
+    PlaceIndexComponent,
     PlaceListComponent,
     PlaceCreationComponent,
   ],

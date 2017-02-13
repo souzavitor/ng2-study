@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, EventEmitter, ViewChild, NgZone, OnInit, Input, ElementRef, Output } from '@angular/core';
 
 import { MapsAPILoader } from 'angular2-google-maps/core';
 import { Place } from '../shared/place.model';
@@ -17,8 +17,10 @@ export class PlaceCreationComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public zoom: number;
-  private autocomplete : any;
 
+  private place : Place = new Place('', '', '', '', '', '', '', []);
+  private autocomplete : any;
+  // the fields that we need from Google Place Object
   private componentForm : any = {
     street_number: 'short_name',
     route: 'long_name',
@@ -28,13 +30,11 @@ export class PlaceCreationComponent implements OnInit {
     postal_code: 'short_name'
   };
 
-  private place : Place;
-
   @Input() listId : string;
-  @Input() places : Place[];
+  @Output() updateCoordinates : EventEmitter<Object> = new EventEmitter<Object>();
 
-  @ViewChild('search')
-  public searchElementRef : ElementRef;
+  @ViewChild('search') searchElementRef : ElementRef;
+  @ViewChild('placeForm') placeForm : any;
 
   constructor( 
     private mapLoader: MapsAPILoader,
@@ -42,20 +42,19 @@ export class PlaceCreationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.setCurrentPosition();
     this.initAutocomplete();
   }
 
-  public savePlace(event : any) {
-    event.preventDefault();
+  savePlace() {
     this.searchElementRef.nativeElement.blur();
-    if (!this.place) {
+    if (!this.place.address) {
       return;
     }
     this.placeService.savePlace(this.place)
       .subscribe(result => {
         EmitterService.get(this.listId).emit(result);
-        this.place = null;
+        this.placeForm.reset();
+        this.place = new Place('', '', '', '', '', '', '', []);
         this.searchElementRef.nativeElement.value = '';
         this.searchElementRef.nativeElement.focus();
       }, err => console.log(err));
@@ -74,9 +73,11 @@ export class PlaceCreationComponent implements OnInit {
           return;
         }
         this.convertGooglePlace(place);
-        this.latitude = place.geometry.location.lat();
-        this.longitude = place.geometry.location.lng();
-        this.zoom = 12;
+        this.updateCoordinates.emit({
+          latitude : place.geometry.location.lat(),
+          longitude : place.geometry.location.lng(),
+          zoom : 12
+        });
       });
     });
   }
@@ -90,24 +91,12 @@ export class PlaceCreationComponent implements OnInit {
         convertedPlace[addressType] = val;
       }
     }
-    this.place = new Place(
-      convertedPlace.route,
-      convertedPlace.street_number,
-      convertedPlace.postal_code,
-      convertedPlace.country,
-      convertedPlace.administrative_area_level_1,
-      convertedPlace.locality,
-      [place.geometry.location.lat(), place.geometry.location.lng()]
-    );
-  }
-
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
+    this.place.address = convertedPlace.route;
+    this.place.number_address = convertedPlace.street_number;
+    this.place.zip_code = convertedPlace.postal_code;
+    this.place.country = convertedPlace.country;
+    this.place.state = convertedPlace.administrative_area_level_1;
+    this.place.city = convertedPlace.locality;
+    this.place.coordinates = [place.geometry.location.lat(), place.geometry.location.lng()];
   }
 }
