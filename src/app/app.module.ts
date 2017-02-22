@@ -16,7 +16,13 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './users/login/login.component';
+import { AdminComponent } from './admin/admin.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { AuthGuard } from './users/shared/auth.guard';
+import { AuthService } from './users/shared/auth.service';
 
 import { AppRoutes } from './app-routing.module';
 
@@ -24,7 +30,9 @@ import { AppRoutes } from './app-routing.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +42,10 @@ import { AppRoutes } from './app-routing.module';
     HttpModule,
     JsonpModule,
     DropdownModule.forRoot()
+  ],
+  providers: [
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [
     AppComponent
