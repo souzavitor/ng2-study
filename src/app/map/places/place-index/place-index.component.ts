@@ -17,6 +17,12 @@ export class PlaceIndexComponent {
     this.setCurrentPosition();
   }
 
+  onUpdateCoordinates(coordinates : any) {
+    this.lastCoordinates.latitude = coordinates.latitude;
+    this.lastCoordinates.longitude = coordinates.longitude;
+    this.lastCoordinates.zoom = 12;
+  }
+
   onUpdateList(places : Place[]) {
     this.places = places;
   }
