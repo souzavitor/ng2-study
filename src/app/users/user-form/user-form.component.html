@@ -1,0 +1,43 @@
+<h3>Manage User</h3>
+<form class="form" role="creation" (ngSubmit)="saveUser()" #userForm="ngForm" novalidate="novalidate">
+    <div class="form-group">
+        <label for="name" class="control-label">Name:</label>
+        <input type="text" class="form-control" placeholder="Name" required id="name" [(ngModel)]="user.name" #name="ngModel" name="name">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          <div [hidden]="name.errors && !name.errors.required">Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="username" class="control-label">Username:</label>
+        <input type="text" class="form-control" id="username" placeholder="Username" required [(ngModel)]="user.username" name="username" #username="ngModel">
+        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+          <div [hidden]="username.errors && !username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="control-label">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Email" required [(ngModel)]="user.email" name="email" #email="ngModel">
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          <div [hidden]="email.errors && !email.errors.required">Email is required</div>
+          <div [hidden]="email.errors && !email.errors.email">Email is invalid</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="control-label">Password:</label>
+        <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password" #password="ngModel" sgValidateEqual="password_confirmation" reverse="true">
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          <div [hidden]="password.errors && !password.errors.required">Password is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation" class="control-label">Password confirmation:</label>
+        <input type="password" class="form-control" id="password_confirmation" required [(ngModel)]="user.password_confirmation" name="password_confirmation" #password_confirmation="ngModel" sgValidateEqual="password">
+        <div [hidden]="password_confirmation.valid || password_confirmation.pristine" class="alert alert-danger">
+          <div [hidden]="password_confirmation.errors && !password_confirmation.errors.required">Password confirmation is required</div>
+          <div [hidden]="password_confirmation.errors && !password_confirmation.errors.sgValidateEqual">Password mismatch</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid"><i class="glyphicon glyphicon-add"></i>save</button>
+    </div>
+</form>

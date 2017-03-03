@@ -1,0 +1,21 @@
+<div class="modal fade" bsModal #confirmModal="bs-modal" [config]="{backdrop: 'static'}"
+    tabindex="-1" role="dialog" aria-labelledby="sgConfirmModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{title}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="confirmModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" [innerHTML]="message">
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <button (click)="confirm($event)" class="btn btn-primary">{{confirmText}}</button>
+                    <button (click)="cancel($event)" class="btn btn-danger">{{cancelText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

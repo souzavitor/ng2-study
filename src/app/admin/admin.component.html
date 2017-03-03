@@ -20,9 +20,11 @@
                     <li role="presentation" class="dropdown" dropdown>
                         <a id="dropdown-maps" class="dropdown-toggle" data-toggle="dropdown" href dropdownToggle>Maps <span class="caret"></span></a>
                         <ul dropdownMenu role="menu" aria-labelledby="dropdown-maps">
-                            <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/map" id="link-maps">Maps</a></li>
+                            <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/map" id="link-maps">Principal page</a></li>
+                            <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/map/places" id="link-maps">Places Manager</a></li>
                         </ul>
                     </li>
+                    <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/users" id="link-maps">Users</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" [hidden]="!isLoggedIn">
                     <li><a (click)="logout($event)" href="#" id="link-logout">Logout</a></li>

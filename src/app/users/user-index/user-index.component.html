@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Places Manager</h2></div>
+                <div class="panel-body">
+                    <sg-user-form [listId]="listId" [user]="user" (updateUser)="updateUser($event)"></sg-user-form>
+                    <div class="line-separator"></div>
+                    <sg-user-list [listId]="listId"></sg-user-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
