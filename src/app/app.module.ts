@@ -18,6 +18,7 @@ import { EqualValidatorDirective } from './shared/directives/equal-validator.dir
 
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { TooltipModule } from 'ng2-bootstrap/tooltip';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -61,6 +62,8 @@ import { AppRoutes } from './app-routing.module';
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,
+
+    TooltipModule.forRoot(),
     DropdownModule.forRoot(),
     ModalModule.forRoot()
   ],

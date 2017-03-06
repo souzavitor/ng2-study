@@ -9,4 +9,8 @@ import { User } from '../shared/user.model';
 export class UserIndexComponent {
   private listId : string = 'user-list-id';
   private user : User = new User();
+
+  public fillForm(user : User) {
+    this.user = user;
+  }
 }

@@ -21,7 +21,7 @@ export class PlaceListComponent implements OnInit, OnChanges {
     this.loadPlaces();
   }
   ngOnChanges() {
-    EmitterService.get(this.listId).subscribe((places:Place[]) => { this.loadPlaces() });
+    EmitterService.get(this.listId).subscribe((places:Place[]) => this.loadPlaces() );
   }
 
   removePlace(event : any, place : Place) {

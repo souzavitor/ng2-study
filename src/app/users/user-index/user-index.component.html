@@ -4,9 +4,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h2>Places Manager</h2></div>
                 <div class="panel-body">
-                    <sg-user-form [listId]="listId" [user]="user" (updateUser)="updateUser($event)"></sg-user-form>
+                    <sg-user-form [listId]="listId" [user]="user"></sg-user-form>
                     <div class="line-separator"></div>
-                    <sg-user-list [listId]="listId"></sg-user-list>
+                    <sg-user-list [listId]="listId" (onEditUser)="fillForm($event)"></sg-user-list>
                 </div>
             </div>
         </div>

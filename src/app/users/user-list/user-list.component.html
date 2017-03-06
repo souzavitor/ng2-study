@@ -4,6 +4,7 @@
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Email verified</th>
             <th class="actions">Actions</th>
         </tr>
     </thead>
@@ -12,13 +13,16 @@
             <td>{{user.name}}</td>
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
+            <td>{{user.checked_email ? 'yes' : 'no'}}</td>
             <td class="actions">
-                <button (click)="removeUser($event, user)" class="btn btn-link" [disabled]="loggedUser.username === user.username" tooltip="Remove the user"><i class="glyphicon glyphicon-trash"></i></button>
+                <button (click)="confirmRemoveUser($event, user)" class="btn btn-link" [disabled]="loggedUser.username === user.username" tooltip="Remove user"><i class="glyphicon glyphicon-trash"></i></button>
+                <button (click)="editUser($event, user)" class="btn btn-link" tooltip="Edit user"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button class="btn btn-link" [disabled]="user.checked_email"><i class="glyphicon glyphicon-envelope" tooltip="Verify user email"></i></button>
             </td>
         </tr>
     </tbody>
 </table>
-<sg-confirm-modal #confirmModal='sg-confirm-modal' [title]="confirmTitle" [message]="confirmMessage" (onConfirm)="onRemoveConfirm($event)" (onCancel)="onRemoveCancel($event)"></sg-confirm-modal>
+<sg-confirm-modal #confirmModal='sg-confirm-modal' [title]="confirmTitle" [message]="confirmMessage" (onConfirm)="onRemoveConfirm($event)" (onCancel)="onRemoveCancel($event)" confirmText="yes" cancelText="no"></sg-confirm-modal>
 
 <div class="alert alert-info" [hidden]="users.length > 0">
     <p>No users registered! Please register some places ;)</p>

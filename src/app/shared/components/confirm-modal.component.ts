@@ -9,12 +9,11 @@ import { ModalDirective } from 'ng2-bootstrap/modal';
 })
 export class ConfirmModalComponent {
   @Input() confirmText : string = 'OK';
-  @Input() cancelText : string = 'Cancel';
+  @Input() cancelText : string = 'cancel';
   @Input() title : string;
   @Input() message : string;
 
-  @ViewChild('confirmModal')
-  modal : ModalDirective;
+  @ViewChild('confirmModal') modal : ModalDirective;
 
   @Output() onConfirm : EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onCancel : EventEmitter<boolean> = new EventEmitter<boolean>();

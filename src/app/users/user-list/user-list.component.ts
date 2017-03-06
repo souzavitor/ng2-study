@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, OnInit, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, OnInit, OnChanges } from '@angular/core';
 
 import { ModalDirective } from 'ng2-bootstrap/modal';
 
@@ -6,6 +6,8 @@ import { ConfirmModalComponent } from '../../shared/components/confirm-modal.com
 
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
+
+import { AuthService } from '../shared/auth.service';
 
 import { EmitterService } from '../../shared/emitter.service';
 
@@ -15,7 +17,8 @@ import { EmitterService } from '../../shared/emitter.service';
   styles: [require('./user-list.component.scss')]
 })
 export class UserListComponent implements OnInit, OnChanges {
-  @Input() listId : string;
+  @Input() private listId : string;
+  @Output() private onEditUser : EventEmitter<User> = new EventEmitter<User>();
 
   @ViewChild('confirmModal') confirmModal : ConfirmModalComponent;
 
@@ -23,26 +26,31 @@ export class UserListComponent implements OnInit, OnChanges {
   private confirmMessage : string = '';
 
   private users : User[] = [];
-  private user : User;
-
+  private user : User = new User();
   private loggedUser : User;
 
   constructor(private userService : UserService) { }
 
   ngOnChanges() {
-    EmitterService.get(this.listId).subscribe((user : any) => { this.loadUsers() });
+    EmitterService.get(this.listId)
+      .subscribe(() => {
+        this.loggedUser = AuthService.getLoggedUser();
+        this.loadUsers();
+      });
   }
 
   ngOnInit() {
     this.loadUsers();
-    this.loggedUser = new User();
-    this.loggedUser._id = sessionStorage.getItem('user._id');
-    this.loggedUser.email = sessionStorage.getItem('user.email');
-    this.loggedUser.username = sessionStorage.getItem('user.username');
-    this.loggedUser.name = sessionStorage.getItem('user.name');
+    this.loggedUser = AuthService.getLoggedUser();
   }
 
-  removeUser($event: any, user : User) {
+  editUser($event : any, user : User) {
+    $event.preventDefault();
+    let clonedUser = Object.assign(new User(), user);
+    this.onEditUser.emit(clonedUser);
+  }
+
+  confirmRemoveUser($event: any, user : User) {
     $event.preventDefault();
     this.user = user;
     this.confirmMessage = '<p>Are you sure you want to remove the user "' + user.name + '"?</p>';
@@ -60,6 +68,7 @@ export class UserListComponent implements OnInit, OnChanges {
   }
 
   onRemoveCancel() {
+    this.user = new User();
     this.confirmModal.modal.hide();
   }
 

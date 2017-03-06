@@ -29,6 +29,13 @@ export class UserService {
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  updateUser(user : User) : Observable<User> {
+    this.reqOptions.headers.set('Authorization', 'JWT ' + this.token);
+    return this.http.put(this.endpoint + '/' + user._id, user, this.reqOptions)
+      .map((res : Response) => res.json().data)
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   saveUser(user : User) : Observable<User> {
     return this.http.post(this.endpoint, user, this.reqOptions)
       .map((res : Response) => res.json().data)

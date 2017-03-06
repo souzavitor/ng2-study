@@ -25,7 +25,7 @@ export class EqualValidatorDirective implements Validator {
       return {sgValidateEqual: true}
     }
     // value equal and reverse
-    if (e && v === e.value && this.isReverse) {
+    if (e && e.errors && v === e.value && this.isReverse) {
       delete e.errors['sgValidateEqual'];
       if (!Object.keys(e.errors).length) e.setErrors(null);
     }
