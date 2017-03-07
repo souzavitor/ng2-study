@@ -44,6 +44,16 @@ export class UserListComponent implements OnInit, OnChanges {
     this.loggedUser = AuthService.getLoggedUser();
   }
 
+  sendEmailVerification($event : any, user : User) {
+    $event.preventDefault();
+    this.userService.sendEmailVerification(user)
+      .subscribe((result : any) => {
+          this.loadUsers();
+        },
+        err => console.log(err)
+      );
+  }
+
   editUser($event : any, user : User) {
     $event.preventDefault();
     let clonedUser = Object.assign(new User(), user);
