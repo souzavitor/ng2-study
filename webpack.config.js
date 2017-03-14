@@ -21,7 +21,7 @@ const config = {
       { enforce: 'pre', test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' },
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader?keepUrl=true', 'angular2-router-loader'],
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
       { test: /\.json$/, loader: 'json-loader' },
