@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-navbar-collapse-1"
                         aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -18,10 +18,10 @@
                 <ul class="nav navbar-nav">
                     <li [routerLinkActive]="['active']"><a routerLink="/" id="link-home">Home</a></li>
                     <li role="presentation" class="dropdown" dropdown>
-                        <a id="dropdown-maps" class="dropdown-toggle" data-toggle="dropdown" href dropdownToggle>Maps <span class="caret"></span></a>
-                        <ul dropdownMenu role="menu" aria-labelledby="dropdown-maps">
-                            <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/map" id="link-maps">Principal page</a></li>
-                            <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/map/places" id="link-maps">Places Manager</a></li>
+                        <a id="dropdown-maps" href dropdownToggle (click)="false">Maps <span class="caret"></span></a>
+                        <ul *dropdownMenu role="menu" class="dropdown-menu" aria-labelledby="dropdown-maps">
+                            <li [routerLinkActive]="['active']" role="menuitem"><a class="dropdown-item" routerLink="/map" id="link-maps">Principal page</a></li>
+                            <li [routerLinkActive]="['active']" role="menuitem"><a class="dropdown-item" routerLink="/map/places" id="link-maps">Places Manager</a></li>
                         </ul>
                     </li>
                     <li [routerLinkActive]="['active']" role="menuitem"><a routerLink="/users" id="link-maps">Users</a></li>

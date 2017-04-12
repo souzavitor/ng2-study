@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -42,7 +42,7 @@ import { AppRoutes } from './app-routing.module';
     HttpModule,
     JsonpModule,
 
-    DropdownModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     AuthGuard,

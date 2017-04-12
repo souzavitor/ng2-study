@@ -11,7 +11,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
-    "types": ["node", "jasmine"]
+    "types": ["node", "jasmine"],
+    "lib": ["dom", "es6"]
   },
   "exclude": [
     "node_modules"
