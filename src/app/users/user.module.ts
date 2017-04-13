@@ -10,6 +10,7 @@ import { EqualValidatorDirective } from '../shared/directives/equal-validator.di
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserEmailVerificationComponent } from './confirm-email-verification/confirm-email-verification';
 
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { TooltipModule } from 'ng2-bootstrap/tooltip';
@@ -32,6 +33,7 @@ import { UserRoutes } from './user-routing.module';
     UserIndexComponent,
     UserFormComponent,
     UserListComponent,
+    UserEmailVerificationComponent,
 
     ConfirmModalComponent,
     EqualValidatorDirective
