@@ -16,18 +16,11 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
-  public login(user : User) {
-    this.http
+  public login(user : User) : Observable<any> {
+    return this.http
       .post(this.endpoint, {username: user.username, password: user.password})
       .map((res : Response) => res.json().data)
-      .catch((error : any) => Observable.throw(error.json().error || 'Server error'))
-      .subscribe(
-        result => {
-          AuthService.fillSessionStorage(result);
-          this.router.navigate(['']);
-        },
-        err => console.log(err)
-      );
+      .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   public static getLoggedUser() : User {

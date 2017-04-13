@@ -13,16 +13,20 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { FlashMessageComponent } from './flash-message/flash-message.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthGuard } from './users/shared/auth.guard';
 import { AuthService } from './users/shared/auth.service';
+
+import { FlashMessageService } from './flash-message/shared/flash-message.service';
 
 import { AppRoutes } from './app-routing.module';
 
@@ -32,7 +36,8 @@ import { AppRoutes } from './app-routing.module';
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    FlashMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +48,12 @@ import { AppRoutes } from './app-routing.module';
     JsonpModule,
 
     BsDropdownModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    FlashMessageService
   ],
   bootstrap: [AppComponent]
 })

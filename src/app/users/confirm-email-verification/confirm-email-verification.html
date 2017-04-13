@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div [hidden]="!isConfirmed">
+                <h2>Your email has been confirmed successfully</h2>
+                <p>You are going to be redirected in a few minutes... But if you are in a hurry you can <a [routerLink]="['/']">click</a> here.</p>
+            </div>
+            <div [hidden]="!isNotConfirmed">
+                <h2>Your email could not be confirmed</h2>
+            </div>
+            <div [hidden]="!isConfirming">
+                <h2>Your email will be confirmed soon enough</h2>
+            </div>
+        </div>
+    </div>
+</div>

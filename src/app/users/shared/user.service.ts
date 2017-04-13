@@ -36,6 +36,12 @@ export class UserService {
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  checkEmailVerification(token : string) : Observable<User> {
+    return this.http.post(this.endpoint + '/check-email-verification/' + token, {}, this.reqOptions)
+      .map((res : Response) => res.json().data)
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   sendEmailVerification(user : User) : Observable<User> {
     return this.http.post(this.endpoint + '/send-email-verification/' + user._id , user, this.reqOptions)
       .map((res : Response) => res.json().data)
