@@ -11,9 +11,9 @@ export class AuthService {
 
   constructor(private router : Router, private http : Http) { }
 
-  public logout() {
-    sessionStorage.clear();
-    this.router.navigate(['login']);
+  public logout() : boolean {
+    localStorage.clear();
+    return true;
   }
 
   public login(user : User) : Observable<any> {
@@ -25,24 +25,24 @@ export class AuthService {
 
   public static getLoggedUser() : User {
     let loggedUser = new User();
-    loggedUser._id = sessionStorage.getItem('user._id');
-    loggedUser.email = sessionStorage.getItem('user.email');
-    loggedUser.username = sessionStorage.getItem('user.username');
-    loggedUser.name = sessionStorage.getItem('user.name');
+    loggedUser._id = localStorage.getItem('user._id');
+    loggedUser.email = localStorage.getItem('user.email');
+    loggedUser.username = localStorage.getItem('user.username');
+    loggedUser.name = localStorage.getItem('user.name');
     return loggedUser;
   }
 
-  public static fillSessionStorage(user : User) {
-    sessionStorage.setItem('user._id', user._id);
-    sessionStorage.setItem('user.email', user.email);
-    sessionStorage.setItem('user.username', user.username);
-    sessionStorage.setItem('user.name', user.name);
+  public static fillLocalStorage(user : User) {
+    localStorage.setItem('user._id', user._id);
+    localStorage.setItem('user.email', user.email);
+    localStorage.setItem('user.username', user.username);
+    localStorage.setItem('user.name', user.name);
     if (typeof user.token !== 'undefined') {
-      sessionStorage.setItem('user.token', user.token);
+      localStorage.setItem('user.token', user.token);
     }
   }
 
   public isLoggedIn() {
-    return !!sessionStorage.getItem('user.token');
+    return !!localStorage.getItem('user.token');
   }
 }

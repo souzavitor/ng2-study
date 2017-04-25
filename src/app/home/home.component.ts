@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   constructor(private flashMessageService : FlashMessageService) {}
 
   ngOnInit() {
-    let user = sessionStorage.getItem('user.name');
+    let user = localStorage.getItem('user.name');
     this.flashMessageService.show('Welcome, ' + user + '!', { type: 'success', timeout : 5000 });
   }
 }

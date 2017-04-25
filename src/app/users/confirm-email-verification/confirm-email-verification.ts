@@ -18,9 +18,10 @@ export class UserEmailVerificationComponent implements OnInit {
 
   ngOnInit() {
     let token = this.route.queryParams
-      .map(params => params['token'] || '')
-      .subscribe(token => {
-        this.userService.checkEmailVerification(token)
+      .map(params => params['key'] || '')
+      .subscribe(key => {
+        key = encodeURIComponent(key);
+        this.userService.checkEmailVerification(key)
           .subscribe(() => {
             this.isConfirming = false;
             this.isConfirmed = true;

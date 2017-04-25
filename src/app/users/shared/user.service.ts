@@ -11,7 +11,7 @@ export class UserService {
   private token : string = '';
 
   constructor(private http : Http) {
-    this.token = sessionStorage.getItem('user.token');
+    this.token = localStorage.getItem('user.token');
     this.reqOptions.headers = new Headers();
   }
 
@@ -37,7 +37,8 @@ export class UserService {
   }
 
   checkEmailVerification(token : string) : Observable<User> {
-    return this.http.post(this.endpoint + '/check-email-verification/' + token, {}, this.reqOptions)
+    this.reqOptions.headers.set('Authorization', 'JWT ' + this.token);
+    return this.http.get(this.endpoint + '/check-email-verification/' + token, this.reqOptions)
       .map((res : Response) => res.json().data)
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }

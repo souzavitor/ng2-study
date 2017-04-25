@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../users/shared/auth.service';
 
@@ -10,12 +11,15 @@ import { AuthService } from '../users/shared/auth.service';
 export class AdminComponent {
   public isLoggedIn = false;
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService, private router : Router) {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   logout(event : any) {
     event.preventDefault();
-    this.authService.logout();
+    let logout = this.authService.logout();
+    if (logout) {
+      this.router.navigate(['login']);
+    }
   }
 }

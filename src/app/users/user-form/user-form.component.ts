@@ -35,7 +35,7 @@ export class UserFormComponent implements OnChanges {
         .subscribe((result : User) => {
           let loggedUser = AuthService.getLoggedUser();
           if (loggedUser.username === result.username) {
-            AuthService.fillSessionStorage(result);
+            AuthService.fillLocalStorage(result);
           }
           EmitterService.get(this.listId).emit({});
           this.user = new User();

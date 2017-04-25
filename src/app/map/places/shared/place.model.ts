@@ -1,6 +1,7 @@
 export class Place {
     public _id : string;
     constructor(
+        public user_id : string,
         public label : string,
         public address : string,
         public number_address : string,

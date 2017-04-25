@@ -18,7 +18,7 @@ export class PlaceCreationComponent implements OnInit {
   public longitude: number;
   public zoom: number;
 
-  private place : Place = new Place('', '', '', '', '', '', '', []);
+  private place : Place = new Place('', '', '', '', '', '', '', '', []);
   private autocomplete : any;
   // the fields that we need from Google Place Object
   private componentForm : any = {
@@ -36,7 +36,7 @@ export class PlaceCreationComponent implements OnInit {
   @ViewChild('search') searchElementRef : ElementRef;
   @ViewChild('placeForm') placeForm : any;
 
-  constructor( 
+  constructor(
     private mapLoader: MapsAPILoader,
     private placeService : PlaceService
   ) { }
@@ -54,12 +54,12 @@ export class PlaceCreationComponent implements OnInit {
       .subscribe(result => {
         EmitterService.get(this.listId).emit(result);
         this.placeForm.reset();
-        this.place = new Place('', '', '', '', '', '', '', []);
+        this.place = new Place('', '', '', '', '', '', '', '', []);
         this.searchElementRef.nativeElement.value = '';
         this.searchElementRef.nativeElement.focus();
       }, err => console.log(err));
   }
-  
+
   private initAutocomplete() {
     this.mapLoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(
