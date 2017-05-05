@@ -1,5 +1,5 @@
 <div id="flashMessages" class="flash-messages {{classes}}">
-    <alert *ngFor='let message of messages' id="message-{{message.id}}" type="{{message.type}}" dismissible="true">
+    <alert *ngFor='let message of messages' id="message-{{message.id}}" type="{{message.type}}" dismissible="true" [@fadeInOut]="message.state" class="sg-alert">
         <p>{{message.text}}</p>
     </alert>
 </div>

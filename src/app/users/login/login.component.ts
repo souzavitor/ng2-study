@@ -14,6 +14,7 @@ import { FlashMessageService } from '../../flash-message/shared/flash-message.se
 export class LoginComponent implements OnInit {
   public user : User = new User();
 
+  private loginLoading : boolean = false;
   private emailVerificationKey : string = '';
 
   constructor(
@@ -37,9 +38,11 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    this.loginLoading = true;
     this.authService.login(this.user)
       .subscribe(
         result => {
+          this.loginLoading = false;
           AuthService.fillLocalStorage(result);
           if (this.emailVerificationKey == '') {
             this.router.navigate(['']);
@@ -50,8 +53,9 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
+          this.loginLoading = false;
           this.flashMessageService.show(err, {type: 'danger', timeout: 6000});
         }
-      );;
+      );
   }
 }

@@ -5,13 +5,20 @@
         <form (ngSubmit)="login()" #f="ngForm" class="login-form">
             <div class="form-group">
                 <label for="username" class="control-label">Username or email</label>
-                <input type="text" #username="ngModel" [(ngModel)]="user.username" name="username" id="username" class="form-control" required placeholder="username">
+                <input type="text" autocomplete="off" #username="ngModel" [(ngModel)]="user.username" name="username" id="username" class="form-control" required placeholder="username">
             </div>
             <div class="form-group">
                 <label for="password" class="control-label">Password</label>
-                <input type="password" #password="ngModel" [(ngModel)]="user.password" name="password" id="password" class="form-control" required placeholder="password">
+                <input type="password" autocomplete="off" #password="ngModel" [(ngModel)]="user.password" name="password" id="password" class="form-control" required placeholder="password">
             </div>
-            <div class="form-group"><button class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> sign in</button></div>
+            <div class="form-group">
+                <sg-button
+                    content="sign in"
+                    [buttonType]="submit"
+                    [styleClasses]="['btn', 'btn-primary']"
+                    [isLoading]="loginLoading"
+                    [iconClasses]="['glyphicon', 'glyphicon-send']"></sg-button>
+            </div>
         </form>
     </div>
 </div>

@@ -7,6 +7,7 @@ export class FlashMessage implements FlashMessageInterface {
   text : string = '';
   type : string = '';
   timeout : number = 0;
+  state : string = 'out';
 
   constructor(text?: string, type?: string, timeout? : number) {
     this.text = text;

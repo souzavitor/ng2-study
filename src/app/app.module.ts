@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { FlashMessageComponent } from './flash-message/flash-message.component';
+import { CircleLoadingComponent } from "./shared/components/circle-loading/circle-loading.component";
+import { LoadingButtonComponent } from "./shared/components/loading-button/loading-button.component";
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -37,7 +39,9 @@ import { AppRoutes } from './app-routing.module';
     PageNotFoundComponent,
     LoginComponent,
     AdminComponent,
-    FlashMessageComponent
+    FlashMessageComponent,
+    CircleLoadingComponent,
+    LoadingButtonComponent
   ],
   imports: [
     BrowserModule,

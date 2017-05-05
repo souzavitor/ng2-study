@@ -3,4 +3,5 @@ export interface FlashMessageInterface {
     text : string;
     type : string;
     timeout : number;
+    state : string;
 }
