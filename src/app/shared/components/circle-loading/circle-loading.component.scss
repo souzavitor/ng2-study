@@ -1,0 +1,150 @@
+@import '../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+
+$size: 40px;
+$sm-size: 30px;
+$md-size: 40px;
+$lg-size: 60px;
+$gray-circle-color: #333;
+$circle-color: #fff;
+
+@mixin sk-cicle-transform($rotateDeg) {
+  -webkit-transform: rotate($rotateDeg);
+      -ms-transform: rotate($rotateDeg);
+          transform: rotate($rotateDeg);
+}
+
+.sk-circle {
+  &.hide-circle {
+    @include opacity(0);
+    width: 0px !important;
+    height: 0px !important;
+    position: absolute;
+  }
+  &.sm-circle {
+    @include square($sm-size);
+  }
+  &.md-circle {
+    @include square($md-size);
+  }
+  &.lg-circle {
+    @include square($lg-size);
+  }
+  @include opacity(1);
+  margin: 5px auto;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  -webkit-transition: opacity .4s ease-in-out 0s, width .4s ease-in-out 0s, height .4s ease-in-out 0s;
+      -ms-transition: opacity .4s ease-in-out 0s, width .4s ease-in-out 0s, height .4s ease-in-out 0s;
+          transition: opacity .4s ease-in-out 0s, width .4s ease-in-out 0s, height .4s ease-in-out 0s;
+  &.gray-circle .sk-child:before {
+    background-color: $gray-circle-color;
+  }
+  &.white-circle .sk-child:before {
+    background-color: $circle-color;
+  }
+  .sk-child {
+    @include square(100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    &:before {
+      @include square(15%);
+      content: '';
+      display: block;
+      margin: 0 auto;
+      border-radius: 100%;
+      -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+              animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+    }
+  }
+  .sk-circle2 {
+    @include sk-cicle-transform(36deg);
+  }
+  .sk-circle3 {
+    @include sk-cicle-transform(72deg);
+  }
+  .sk-circle4 {
+    @include sk-cicle-transform(108deg);
+  }
+  .sk-circle5 {
+    @include sk-cicle-transform(144deg);
+  }
+  .sk-circle6 {
+    @include sk-cicle-transform(180deg);
+  }
+  .sk-circle7 {
+    @include sk-cicle-transform(216deg);
+  }
+  .sk-circle8 {
+    @include sk-cicle-transform(252deg);
+  }
+  .sk-circle9 {
+    @include sk-cicle-transform(288deg);
+  }
+  .sk-circle10 {
+    @include sk-cicle-transform(324deg);
+  }
+  .sk-circle2:before {
+    -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+  }
+  .sk-circle3:before {
+    -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+  }
+  .sk-circle4:before {
+    -webkit-animation-delay: -0.7s;
+            animation-delay: -0.7s;
+  }
+  .sk-circle5:before {
+    -webkit-animation-delay: -0.6s;
+            animation-delay: -0.6s;
+  }
+  .sk-circle6:before {
+    -webkit-animation-delay: -0.5s;
+            animation-delay: -0.5s;
+  }
+  .sk-circle7:before {
+    -webkit-animation-delay: -0.4s;
+            animation-delay: -0.4s;
+  }
+  .sk-circle8:before {
+    -webkit-animation-delay: -0.3s;
+            animation-delay: -0.3s;
+  }
+  .sk-circle9:before {
+    -webkit-animation-delay: -0.2s;
+            animation-delay: -0.2s;
+  }
+  .sk-circle10:before {
+    -webkit-animation-delay: -0.1s;
+            animation-delay: -0.1s;
+  }
+}
+
+@-webkit-keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
