@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, Input, ViewChild } from '@angular/core';
 
-import { ModalDirective } from 'ng2-bootstrap/modal';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'sg-confirm-modal',

@@ -12,8 +12,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserEmailVerificationComponent } from './confirm-email-verification/confirm-email-verification';
 
-import { ModalModule } from 'ng2-bootstrap/modal';
-import { TooltipModule } from 'ng2-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { UserService } from './shared/user.service';
 import { EmitterService } from '../shared/emitter.service';

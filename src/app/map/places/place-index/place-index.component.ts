@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { MapsAPILoader } from 'angular2-google-maps/core';
+import { MapsAPILoader } from '@agm/core';
 import { Place } from '../shared/place.model';
 
 @Component({

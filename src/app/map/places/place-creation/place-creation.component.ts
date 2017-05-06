@@ -1,6 +1,6 @@
 import { Component, EventEmitter, ViewChild, NgZone, OnInit, Input, ElementRef, Output } from '@angular/core';
 
-import { MapsAPILoader } from 'angular2-google-maps/core';
+import { MapsAPILoader } from '@agm/core';
 import { Place } from '../shared/place.model';
 
 import { PlaceService } from '../shared/place.service';

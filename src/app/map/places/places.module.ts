@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
-import { AgmCoreModule } from 'angular2-google-maps/core';
-import { TooltipModule } from 'ng2-bootstrap/tooltip';
+import { AgmCoreModule } from '@agm/core';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { PlaceIndexComponent } from './place-index/place-index.component';
 import { PlaceListComponent } from './place-list/place-list.component';
