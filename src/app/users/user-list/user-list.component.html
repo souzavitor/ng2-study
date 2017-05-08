@@ -24,7 +24,14 @@
         </tr>
     </tbody>
 </table>
-<sg-confirm-modal #confirmModal='sg-confirm-modal' [title]="confirmTitle" [message]="confirmMessage" (onConfirm)="onRemoveConfirm($event)" (onCancel)="onRemoveCancel($event)" confirmText="yes" cancelText="no"></sg-confirm-modal>
+
+<sg-confirm-modal
+    #confirmModal='sg-confirm-modal'
+    [title]="confirmTitle"
+    [message]="confirmMessage"
+    (onConfirm)="onRemoveConfirm($event)"
+    (onCancel)="onRemoveCancel($event)" confirmText="yes" cancelText="no">
+</sg-confirm-modal>
 
 <div class="alert alert-info" [hidden]="users.length > 0">
     <p>No users registered! Please register some places ;)</p>

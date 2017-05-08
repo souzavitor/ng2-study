@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewChild, OnInit, OnChanges } 
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { ConfirmModalComponent } from '../../shared/components/confirm-modal.component';
+import { ConfirmModalComponent } from '../../shared/components/modal/confirm-modal.component';
 
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
@@ -22,11 +22,11 @@ export class UserListComponent implements OnInit, OnChanges {
 
   @ViewChild('confirmModal') confirmModal : ConfirmModalComponent;
 
-  private confirmTitle : string = 'Atention';
+  private confirmTitle : string = 'Attention';
   private confirmMessage : string = '';
 
-  private users : User[] = [];
   private user : User = new User();
+  private users : User[] = [];
   private loggedUser : User;
 
   constructor(private userService : UserService) { }
@@ -63,7 +63,7 @@ export class UserListComponent implements OnInit, OnChanges {
   confirmRemoveUser($event: any, user : User) {
     $event.preventDefault();
     this.user = user;
-    this.confirmMessage = '<p>Are you sure you want to remove the user "' + user.name + '"?</p>';
+    this.confirmMessage = 'Are you sure you want to remove the user "' + user.name + '"?';
     this.confirmModal.modal.show();
   }
 
@@ -74,7 +74,7 @@ export class UserListComponent implements OnInit, OnChanges {
         this.user = new User;
         this.confirmModal.modal.hide();
       }, err => console.log(err));
-      
+
   }
 
   onRemoveCancel() {

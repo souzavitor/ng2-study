@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
-import { ConfirmModalComponent } from '../shared/components/confirm-modal.component';
+import { ConfirmModalComponent } from '../shared/components/modal/confirm-modal.component';
 import { EqualValidatorDirective } from '../shared/directives/equal-validator.directive';
 
 import { UserIndexComponent } from './user-index/user-index.component';
