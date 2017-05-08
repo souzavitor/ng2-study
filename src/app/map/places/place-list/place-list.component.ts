@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, Input, ViewChild, OnInit, OnChanges } from '@angular/core';
 
-import { ConfirmModalComponent } from '../../../shared/components/modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../../../modal/confirm-modal.component';
 
 import { Place } from '../shared/place.model';
 import { PlaceService } from '../shared/place.service';

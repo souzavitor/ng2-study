@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
-import { ConfirmModalComponent } from '../shared/components/modal/confirm-modal.component';
+import { AppModalModule } from '../modal/app-modal.module';
+
 import { EqualValidatorDirective } from '../shared/directives/equal-validator.directive';
 
 import { UserIndexComponent } from './user-index/user-index.component';
@@ -12,7 +13,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserEmailVerificationComponent } from './confirm-email-verification/confirm-email-verification';
 
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { UserService } from './shared/user.service';
@@ -25,7 +25,7 @@ import { UserRoutes } from './user-routing.module';
     CommonModule,
     FormsModule,
     TooltipModule.forRoot(),
-    ModalModule.forRoot(),
+    AppModalModule,
     RouterModule.forChild(UserRoutes)
   ],
   exports: [],
@@ -35,7 +35,6 @@ import { UserRoutes } from './user-routing.module';
     UserListComponent,
     UserEmailVerificationComponent,
 
-    ConfirmModalComponent,
     EqualValidatorDirective
   ],
   providers: [

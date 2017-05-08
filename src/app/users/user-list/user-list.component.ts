@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewChild, OnInit, OnChanges } 
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
-import { ConfirmModalComponent } from '../../shared/components/modal/confirm-modal.component';
+import { ConfirmModalComponent } from '../../modal/confirm-modal.component';
 
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
