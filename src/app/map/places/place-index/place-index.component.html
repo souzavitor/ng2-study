@@ -4,18 +4,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h2>Place Manager</h2></div>
                 <div class="panel-body">
-                    <sg-place-creation (updateCoordinates)="onUpdateCoordinates($event)" [listId]="listId"></sg-place-creation>
-                    <sebm-google-map
+                    <sg-place-form (updateCoordinates)="onUpdateCoordinates($event)" [listId]="listId"></sg-place-form>
+                    <agm-map
                         [latitude]="lastCoordinates.latitude"
                         [longitude]="lastCoordinates.longitude"
                         [zoom]="lastCoordinates.zoom"
                         [disableDefaultUI]="false">
-                        <sebm-google-map-marker 
+                        <agm-marker
                             *ngFor="let place of places;"
                             [latitude]="place.coordinates[0]"
                             [longitude]="place.coordinates[1]">
-                        </sebm-google-map-marker>
-                    </sebm-google-map>
+                        </agm-marker>
+                    </agm-map>
                     <div class="line-separator"></div>
                     <sg-place-list [listId]="listId" (updateList)="onUpdateList($event)"></sg-place-list>
                 </div>

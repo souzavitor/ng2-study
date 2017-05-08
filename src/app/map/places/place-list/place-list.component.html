@@ -21,7 +21,7 @@
             <td>{{place.state}}</td>
             <td>{{place.city}}</td>
             <td class="actions">
-                <a href="#" (click)="removePlace($event, place)" tooltip="Remove the place"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="#" (click)="confirmRemovePlace($event, place)" tooltip="Remove the place"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     </tbody>
@@ -29,3 +29,11 @@
 <div class="alert alert-info" [hidden]="places.length > 0">
     <p>No places registered! Please register some places ;)</p>
 </div>
+
+<sg-confirm-modal
+    #confirmModal='sg-confirm-modal'
+    [title]="confirmTitle"
+    [message]="confirmMessage"
+    (onConfirm)="onRemoveConfirm($event)"
+    (onCancel)="onRemoveCancel($event)" confirmText="yes" cancelText="no">
+</sg-confirm-modal>

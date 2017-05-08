@@ -9,7 +9,7 @@ import { EmitterService } from '../../../shared/emitter.service';
 declare var google : any;
 
 @Component({
-  selector: 'sg-place-creation',
+  selector: 'sg-place-form',
   template: require('./place-creation.component.html'),
   styles: [require('./place-creation.component.scss')]
 })
@@ -18,8 +18,9 @@ export class PlaceCreationComponent implements OnInit {
   public longitude: number;
   public zoom: number;
 
-  private place : Place = new Place('', '', '', '', '', '', '', '', []);
+  private place : Place = new Place();
   private autocomplete : any;
+
   // the fields that we need from Google Place Object
   private componentForm : any = {
     street_number: 'short_name',
@@ -54,7 +55,7 @@ export class PlaceCreationComponent implements OnInit {
       .subscribe(result => {
         EmitterService.get(this.listId).emit(result);
         this.placeForm.reset();
-        this.place = new Place('', '', '', '', '', '', '', '', []);
+        this.place = new Place();
         this.searchElementRef.nativeElement.value = '';
         this.searchElementRef.nativeElement.focus();
       }, err => console.log(err));
