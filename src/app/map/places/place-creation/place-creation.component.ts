@@ -25,7 +25,7 @@ export class PlaceCreationComponent implements OnInit {
   private componentForm : any = {
     street_number: 'short_name',
     route: 'long_name',
-    locality: 'long_name',
+    administrative_area_level_2: 'long_name',
     administrative_area_level_1: 'short_name',
     country: 'long_name',
     postal_code: 'short_name'
@@ -67,6 +67,7 @@ export class PlaceCreationComponent implements OnInit {
         this.searchElementRef.nativeElement,
         {types: ['address']}
       );
+
       this.autocomplete.addListener('place_changed', () => {
         let place = this.autocomplete.getPlace();
 
@@ -97,7 +98,7 @@ export class PlaceCreationComponent implements OnInit {
     this.place.zip_code = convertedPlace.postal_code;
     this.place.country = convertedPlace.country;
     this.place.state = convertedPlace.administrative_area_level_1;
-    this.place.city = convertedPlace.locality;
+    this.place.city = convertedPlace.administrative_area_level_2;
     this.place.coordinates = [place.geometry.location.lat(), place.geometry.location.lng()];
   }
 }
