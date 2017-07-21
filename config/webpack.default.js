@@ -22,7 +22,7 @@ var config = {
   },
 
   resolve: {
-    extensions: ['.ts', '.es6', '.js', '.json']
+    extensions: ['.ts', '.es6', '.js', '.json', '.css', '.scss', '.html'],
   },
 
   module: {

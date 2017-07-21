@@ -34,6 +34,6 @@
     #confirmModal='sg-confirm-modal'
     [title]="confirmTitle"
     [message]="confirmMessage"
-    (onConfirm)="onRemoveConfirm($event)"
+    (onConfirm)="onRemoveConfirm($event, place)"
     (onCancel)="onRemoveCancel($event)" confirmText="yes" cancelText="no">
 </sg-confirm-modal>

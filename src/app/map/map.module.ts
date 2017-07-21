@@ -5,7 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 import { PanelComponent } from './panel/panel.component';
 
-import { MapRoutes } from './map-routing.module';
+import { MapRoutingModule } from './map-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { MapRoutes } from './map-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(MapRoutes)
+
+    MapRoutingModule
   ],
   providers: []
 })

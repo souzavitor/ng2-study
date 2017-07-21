@@ -45,7 +45,7 @@ export class PlaceListComponent implements OnInit, OnChanges {
     this.confirmModal.modal.hide();
   }
 
-  onRemoveConfirm(place : Place) {
+  onRemoveConfirm(event : any, place : Place) {
     this.placeService.removePlace(place)
       .subscribe(result => {
         this.loadPlaces();

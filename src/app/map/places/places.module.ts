@@ -19,14 +19,16 @@ import { PlaceService } from './shared/place.service';
 
 import { EmitterService } from '../../shared/emitter.service';
 
-import { PlacesRoutes } from './places-routing.module';
+import { PlaceRoutingModule } from './places-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AppModalModule,
-    RouterModule.forChild(PlacesRoutes),
+
+    PlaceRoutingModule,
+
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     AgmCoreModule.forRoot({

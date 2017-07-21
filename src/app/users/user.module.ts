@@ -18,7 +18,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { UserService } from './shared/user.service';
 import { EmitterService } from '../shared/emitter.service';
 
-import { UserRoutes } from './user-routing.module';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   imports: [
@@ -26,7 +26,8 @@ import { UserRoutes } from './user-routing.module';
     FormsModule,
     TooltipModule.forRoot(),
     AppModalModule,
-    RouterModule.forChild(UserRoutes)
+
+    UserRoutingModule,
   ],
   exports: [],
   declarations: [

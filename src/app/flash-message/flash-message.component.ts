@@ -12,7 +12,7 @@ import { FlashMessageService } from "./shared/flash-message.service";
       trigger('fadeInOut', [
         state('out', style({
           'opacity': '0',
-          'margin-top': '-25px',
+          'margin-top': '-64px',
         })),
         state('in', style({
           'opacity': '1',
