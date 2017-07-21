@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { AuthGuard } from '../users/shared/auth.guard';
-import { AuthService } from '../users/shared/auth.service';
+import { AuthGuard } from '../users/shared/auth.guard'
 
 // bootstrap components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -22,8 +21,7 @@ import { AdminComponent } from './admin.component';
   exports: [],
   declarations: [AdminComponent],
   providers: [
-    AuthGuard,
-    AuthService
+    AuthGuard
   ],
 })
 export class AdminModule { }

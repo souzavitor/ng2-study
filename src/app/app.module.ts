@@ -26,7 +26,9 @@ import { LoadingButtonComponent } from "./shared/components/loading-button/loadi
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { AppRoutingModule }  from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AuthService } from './users/shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { AppRoutingModule }  from './app-routing.module';
 
     FlashMessageModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
